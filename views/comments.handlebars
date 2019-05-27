@@ -1,0 +1,13 @@
+<div><p>建议留言</p></div>
+<div>
+	<p>评论列表</p>
+	<button class="btn btn-primary" id="btn">发表</button>
+</div>
+<ul>
+	{{#each comments}}
+	<li>&nbsp;{{content}}<span>&nbsp;{{time}}</span><span>&nbsp;{{name}}</span>
+	</li>
+	{{/each}}
+</ul>
+<script src="js/comment.js"></script>
+
