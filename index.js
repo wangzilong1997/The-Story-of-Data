@@ -292,6 +292,7 @@ let comments = [
   ]
 app.get('/comments/form',(req,res) => {
 		res.render('comform');
+		num++
 });
 
 app.get('/comments',(req,res) => {
@@ -314,6 +315,7 @@ app.get('/comments',(req,res) => {
 		res.end()
 });
 app.get('/commentss',(req,res) => {
+		num++
 		res.render('comments',{comments:comments});
 });
 
