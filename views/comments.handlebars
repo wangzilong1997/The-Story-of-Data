@@ -1,13 +1,18 @@
-<div><p>建议留言</p></div>
-<div>
-	<p>评论列表</p>
+<div style="display:flex;align-items:center;justify-content:center"><h4>建议留言</h4></div>
+<div style="display:flex;align-items:center;justify-content:center">
+	<h6>评论列表</h6>
+</div>
+<div style="display:flex;align-items:center;justify-content:center">
 	<button class="btn btn-primary" id="btn">发表</button>
 </div>
-<ul>
-	{{#each comments}}
-	<li>&nbsp;{{content}}<span>&nbsp;{{time}}</span><span>&nbsp;{{name}}</span>
-	</li>
-	{{/each}}
-</ul>
+<br/>
+<div style="display:flex;align-items:center;justify-content:center">
+	<ul>
+		{{#each comments}}
+		<li style="font:300 19px '微软雅黑'; list-style-type:none; padding:1.75rem 1.25rem">&nbsp;{{content}}<span>&nbsp;{{time}}</span><span>&nbsp;{{name}}</span>
+		</li>
+		{{/each}}
+	</ul>
+</div>
 <script src="js/comment.js"></script>
 
