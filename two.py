@@ -107,12 +107,30 @@ def getcloud():
             f.write(i)
     text = open('ebak.txt','r',encoding='utf-8').read()
     keyword = anl.extract_tags(text,66,withWeight=True)
-    print(keyword)
+    print(keyword[:9])
+    print(keyword[0][0])
+    impkeyword = []
+    keywordnum = []
+    file = open('public/files/cdays-4-result.txt','r',encoding='utf-8-sig')
+    source = file.read()
+    for k in range(0,9):
+        impkeyword.append(keyword[k][0])
+        keywordnum.append(len(re.findall(keyword[k][0],source)))
+    print(impkeyword)
+    print(keywordnum)
+    file.close
+    bar = (
+        Bar()
+            .add_xaxis(impkeyword)
+            .add_yaxis(name,keywordnum)
+            .set_global_opts(title_opts=opts.TitleOpts(title='高频率词汇草率汇总', subtitle="草率"))
+    )
     cloud =(
         WordCloud()
         .add("",keyword,word_size_range=[20,100],shape=SymbolType.DIAMOND)
         .set_global_opts(title_opts=opts.TitleOpts(title="巨草率的词云"))
     )
+    page.add(bar)
     page.add(cloud)
         
 #判断变量类型的函数

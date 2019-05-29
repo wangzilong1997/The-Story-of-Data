@@ -156,7 +156,7 @@ app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
 
 
-app.set('port',process.env.PORT || 4222);
+//app.set('port',process.env.PORT || 4222);
 //logging
 
 switch(app.get('env')){
