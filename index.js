@@ -28,7 +28,7 @@ var connection = mysql.createConnection({
 	user:'root',
 	password:'root',
 	database:'sum',
-	prot:'3306'
+	port:'3306'
 });
 connection.connect(function(err){
 	if(err){
