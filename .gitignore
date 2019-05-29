@@ -3,4 +3,5 @@ keguan.exe
 path
 weather.py
 charts
+public/files/*
 access.log
