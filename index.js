@@ -82,7 +82,7 @@ setInterval(function(){
 		console.log('并没有人访问')
 	}
 	else{
-		insert();
+	//	insert();
 		console.log('else执行');
 		select();
 	}
@@ -370,12 +370,12 @@ function shutDown(){
 //kill 程序时保存到数据库
 process.on('SIGTERM',function(){
 	console.log('SIGTERM执行')
-	insert();
+//	insert();
 	process.exit(0);
 });
 
 process.on('SIGINT',function(){
-	insert();
+//	insert();
 /*	
 	setTimeout(() =>{
 		close();
@@ -389,5 +389,5 @@ process.on('SIGINT',function(){
 	},3000)
 	
 });
-http.createServer(app).listen(3456)
-https.createServer(credentials,app).listen(443)
+http.createServer(app).listen(4222)
+//https.createServer(credentials,app).listen(4433)
