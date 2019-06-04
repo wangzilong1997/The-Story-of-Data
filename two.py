@@ -6,10 +6,10 @@ from pyecharts.globals import SymbolType
 from pyecharts import options as opts
 import sys
 import jieba.analyse as anl
-def getyear(name):
+def getyear(name,linkfile):
     year = []
     pick = []
-    file = open('public/files/cdays-4-result.txt','r',encoding='utf-8-sig')
+    file = open(linkfile,'r',encoding='utf-8-sig')
     source = file.read()
     sourcelist = source.splitlines()
     begin = sourcelist[8][:4]
@@ -95,9 +95,9 @@ def getyear(name):
     print(talktime)
     page.add(bar,linemon,linehour)
     #简单词云部分
-def getcloud():
+def getcloud(linkfile):
     newtext = []
-    for word in open('public/files/cdays-4-result.txt','r',encoding='utf-8-sig'):
+    for word in open(linkfile,'r',encoding='utf-8-sig'):
         tmp= word[0:4]
         if(tmp == "===="or tmp == "消息记录" or tmp == "消息分组" or tmp == "消息对象" or tmp == "2015" or tmp == "2016" or tmp == "2017" or tmp == "2018" or tmp == "2019"):
             continue
@@ -107,12 +107,30 @@ def getcloud():
             f.write(i)
     text = open('ebak.txt','r',encoding='utf-8').read()
     keyword = anl.extract_tags(text,66,withWeight=True)
-    print(keyword)
+    print(keyword[:9])
+    print(keyword[0][0])
+    impkeyword = []
+    keywordnum = []
+    file = open(linkfile,'r',encoding='utf-8-sig')
+    source = file.read()
+    for k in range(0,9):
+        impkeyword.append(keyword[k][0])
+        keywordnum.append(len(re.findall(keyword[k][0],source)))
+    print(impkeyword)
+    print(keywordnum)
+    file.close
+    bar = (
+        Bar()
+            .add_xaxis(impkeyword)
+            .add_yaxis('ly',keywordnum)
+            .set_global_opts(title_opts=opts.TitleOpts(title='高频率词汇草率汇总', subtitle="草率"))
+    )
     cloud =(
         WordCloud()
         .add("",keyword,word_size_range=[20,100],shape=SymbolType.DIAMOND)
         .set_global_opts(title_opts=opts.TitleOpts(title="巨草率的词云"))
     )
+    page.add(bar)
     page.add(cloud)
         
 #判断变量类型的函数
@@ -135,8 +153,12 @@ def typeof(variate):
     return type
 if __name__ == '__main__':
     name = sys.argv[1]
+    linkfile = sys.argv[2]
+    print(name)
+    print(linkfile)
+    file = linkfile.split('/')
     page = Page()
-    getyear(name)
-    getcloud()
+    getyear(name,linkfile)
+    getcloud(linkfile)
     #年度表格添加
-    page.render(r'views/process.handlebars')
+    page.render('views/'+file[2]+'.handlebars')

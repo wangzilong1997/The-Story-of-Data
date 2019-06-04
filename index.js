@@ -82,7 +82,7 @@ setInterval(function(){
 		console.log('并没有人访问')
 	}
 	else{
-		insert();
+	//	insert();
 		console.log('else执行');
 		select();
 	}
@@ -106,13 +106,17 @@ var name;
 app.post('/chatrecord/:year/:month',function(req,res){
 	var form = new formidable.IncomingForm();
 	form.uploadDir = './public/files';
+//	form.keepExtensions = true;
 	form.parse(req,function(err,fields,files){
 		name = fields.name
 		if(err) return res.redirect(303,'/error');
 		console.log('received fields:');
-		console.log('fields');
+		console.log(fields);
 		console.log('received files:');
 		console.log(files);
+		console.log(files.txt.path)
+		console.log(name)
+		/*
 		fs.readdir('public/files',function(err,files){
 			if(err){
 				console.log(err)
@@ -123,11 +127,19 @@ app.post('/chatrecord/:year/:month',function(req,res){
 			   if (err) throw err;
 			   console.log('重命名完成')
 			})
-		})
-		res.redirect(303,'/thank-you');
-		num++;
-		console.log(num)
-	});
+		})*/
+		filepath = files.txt.path
+		console.log(typeof(filepath))
+		file = filepath.split('/')
+		console.log(file)
+		cp.exec('python two.py '+name+' '+files.txt.path,(err,stdout,stderr) => {
+		if(err) console.log('stderr',err)
+		if(stdout) console.log('stdout',stdout)
+		console.log(file[2] + '当前用户处理程序完成')
+		res.redirect(303,'/thank-you?userid='+file[2])
+		//res.render(file[2])
+		});
+	});	
 });
 /*
 //动态显示cookie
@@ -156,7 +168,7 @@ app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
 
 
-app.set('port',process.env.PORT || 4222);
+//app.set('port',process.env.PORT || 4222);
 //logging
 
 switch(app.get('env')){
@@ -217,7 +229,12 @@ app.get('/render',function(req,res){
 });
 //子进程处理界面
 app.get('/process',function(req,res){
-		fs.exists('public/files/cdays-4-result.txt',function(exists){
+	
+	console.log(req.query.userid)
+	res.render(req.query.userid)
+	
+	//res.render('process')
+	/*	fs.exists('public/files/cdays-4-result.txt',function(exists){
 			if(exists){
 					cp.exec('python two.py '+name ,(err,stdout,stderr)=>{
 						if(err) console.log('stderr',err);
@@ -251,7 +268,7 @@ app.get('/process',function(req,res){
 						console.log(num)
 			}
 			});		
-
+*/
 });
 //模板数据接口
 app.get('/handlebars',function(req,res){
@@ -321,9 +338,10 @@ app.get('/commentss',(req,res) => {
 
 //thank-you
 app.get('/thank-you',function(req,res){
-		res.render('thank-you');
+		console.log(req.query.userid)
 		num++;
 		console.log(num);
+		res.render('thank-you',{userid:req.query.userid});
 });
 
 // keguan
@@ -370,12 +388,12 @@ function shutDown(){
 //kill 程序时保存到数据库
 process.on('SIGTERM',function(){
 	console.log('SIGTERM执行')
-	insert();
+	//insert();
 	process.exit(0);
 });
 
 process.on('SIGINT',function(){
-	insert();
+	//insert();
 /*	
 	setTimeout(() =>{
 		close();
@@ -389,5 +407,5 @@ process.on('SIGINT',function(){
 	},3000)
 	
 });
-http.createServer(app).listen(80)
-https.createServer(credentials,app).listen(443)
+http.createServer(app).listen(1234)
+//https.createServer(credentials,app).listen(443)
