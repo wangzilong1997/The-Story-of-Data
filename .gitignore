@@ -1,8 +1,26 @@
+# 模块部分
 node_modules
+
+# keguan 老司机的程序
 keguan.exe
+
+# 额 模块化https 未完成
 path
+
+# 偷偷摸摸
 weather.py
+
+# 别人的
 charts
+
+# 用户上传暂存目录
 public/files/*
+
+# 用户暂存目录
 views/upload*
+
+# 日志文件
 access.log
+
+# 处理中间文件
+ebak.txt

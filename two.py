@@ -122,7 +122,7 @@ def getcloud(linkfile):
     bar = (
         Bar()
             .add_xaxis(impkeyword)
-            .add_yaxis('ly',keywordnum)
+            .add_yaxis('最多的词的次数',keywordnum)
             .set_global_opts(title_opts=opts.TitleOpts(title='高频率词汇草率汇总', subtitle="草率"))
     )
     cloud =(
