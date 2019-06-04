@@ -1,12 +1,13 @@
 <form action="/comments" method="GET" role="form">
+	<br><br><br><br>
 	<legend>您的建议</legend>
 	<div class="form-group">
-		<label for="name">你的名字:</label>
-		<input type="text" name="name" class="form-control" id="name" palceholder="请输入你的名字！" required maxlength="10" minlength="2">
+		<label for="name">你的名字:</label><br>
+		<input type="text" name="name" class="form-control" id="name" palceholder="请输入你的名字！" required maxlength="10" minlength="2" style="display:inline-block;width:80%">
 	</div>
 	<div class="form-group">
-		<label for="content">评论内容:</label>
-		<textarea name="content" id="content" class="form-control" rows="6" required minlength="5"></textarea>
+		<label for="content">评论内容:</label><br>
+		<textarea name="content" id="content" class="form-control" rows="6" required minlength="5" style="display:inline-block;width:80%"></textarea>
 	</div>
 	<button type="submit" class="btn btn-primary">提交</button>
 </form>
