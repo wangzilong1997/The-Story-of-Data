@@ -8,6 +8,7 @@ var https = require('https')
 var privatepem = fs.readFileSync('path/to/2031967_www.wangshuaishuai.com.pem','utf8')
 var privatekey = fs.readFileSync('path/to/2031967_www.wangshuaishuai.com.key','utf8')
 var credentials = {key:privatekey,cert:privatepem}
+//var credentials = require('./lib/credentials.js')
 var morgan = require('morgan')
 let url = require('url')
 //cron风格定时器
@@ -109,22 +110,15 @@ app.post('/chatrecord/:year/:month',function(req,res){
 	form.parse(req,function(err,fields,files){
 		name = fields.name
 		if(err) return res.redirect(303,'/error');
-		console.log('received fields:');
-		console.log('fields');
-		console.log('received files:');
-		console.log(files);
-		fs.readdir('public/files',function(err,files){
-			if(err){
-				console.log(err)
-				return err;
-			}
-			console.log(files[0])
-			fs.rename('public/files/'+files[0],'public/files/cdays-4-result.txt',(err) =>{
-			   if (err) throw err;
-			   console.log('重命名完成')
-			})
-		})
-		res.redirect(303,'/thank-you');
+		let filepath = files.txt.path
+		let file = filepath.split('/')
+		cp.exec('python two.py '+name+' '+filepath,(err,stdout,stderr)=>{
+			if(err) console.log('stderr',err)
+			if(stdout) console.log('stdout',stdout)
+			console.log(file[2] + '当前用户处理程序完成')
+			console.log(filepath)
+			res.redirect(303,'/thank-you?userid='+file[2])
+		});
 		num++;
 		console.log(num)
 	});
@@ -217,41 +211,10 @@ app.get('/render',function(req,res){
 });
 //子进程处理界面
 app.get('/process',function(req,res){
-		fs.exists('public/files/cdays-4-result.txt',function(exists){
-			if(exists){
-					cp.exec('python two.py '+name ,(err,stdout,stderr)=>{
-						if(err) console.log('stderr',err);
-						if(stdout) console.log('stdout',stdout);
-						console.log('getprocess.handlebars');
-						fs.unlink('public/files/cdays-4-result.txt',(err) => {
-							if (err) throw err;
-							console.log('文件已删除');
-							res.render('process');
-							num++;
-							console.log(num)
-						});
-						fs.exists('ebak.txt',function(exists){
-							if(exists){
-								fs.unlink('ebak.txt',(err) =>{
-									if(err) throw err;
-									console.log('ebak.txt已删除')
-								});
-							}
-							else{
-								console.log('ebak.txt不存在')
-							}
-						});
-					});
-				}
-			else{
-			//用户隐私问题和错误提示缺失
-						console.log('cdays-4-result文件不存在');
-						res.render('process');
-						num++;
-						console.log(num)
-			}
-			});		
-
+	console.log(req.query.userid)
+	res.render(req.query.userid)
+	num++
+	console.log(num)
 });
 //模板数据接口
 app.get('/handlebars',function(req,res){
@@ -321,9 +284,10 @@ app.get('/commentss',(req,res) => {
 
 //thank-you
 app.get('/thank-you',function(req,res){
-		res.render('thank-you');
+		console.log(req.query.userid)
 		num++;
 		console.log(num);
+		res.render('thank-you',{userid:req.query.userid});
 });
 
 // keguan
