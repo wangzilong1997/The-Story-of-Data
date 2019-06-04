@@ -4,3 +4,5 @@ path
 weather.py
 charts
 access.log
+public/files
+view/upload_*
