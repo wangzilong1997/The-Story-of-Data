@@ -112,6 +112,20 @@ app.post('/chatrecord/:year/:month',function(req,res){
 		if(err) return res.redirect(303,'/error');
 		let filepath = files.txt.path
 		let file = filepath.split('/')
+		setTimeout(()=>{
+			fs.unlink(filepath,(err)=>{
+				if(err) {
+					throw err;
+				}
+				console.log('成功删除了'+filepath)
+			});
+			fs.unlink('views/userfile/'+file[2]+'.handlebars',(err)=>{
+				if(err){
+					throw err;
+				}
+				console.log('成功删除了views/userfile/'+file[2]+'.handlebars')
+			});
+		},1000 * 600)
 		cp.exec('python two.py '+name+' '+filepath,(err,stdout,stderr)=>{
 			if(err) console.log('stderr',err)
 			if(stdout) console.log('stdout',stdout)
