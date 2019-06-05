@@ -121,18 +121,8 @@ app.post('/chatrecord/:year/:month',function(req,res){
 		});
 		num++;
 		console.log(num)
-	});
+	})
 });
-/*
-//动态显示cookie
-var fortunes = [
-	"Conquer your fears or they will conquer you.",
-	"Rivers need springs.",
-	"Do not fear what you don't know.",
-	"You will have a pleasant surprise.",
-	"Whenever possible, keep it simple.",
-];
-*/
 
 //设置handlebars视图引擎
 var handlebars = require('express3-handlebars').create({ 
@@ -204,15 +194,10 @@ app.get('/echarts',function(req,res){
 		console.log(num);
 		});	
 });
-//getrender页面
-app.get('/render',function(req,res){
-		console.log('getrender');
-		res.sendFile(__dirname + '/render.html');
-});
 //子进程处理界面
 app.get('/process',function(req,res){
 	console.log(req.query.userid)
-	res.render(req.query.userid)
+	res.render('userfile/'+req.query.userid)
 	num++
 	console.log(num)
 });

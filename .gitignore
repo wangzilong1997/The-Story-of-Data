@@ -7,9 +7,6 @@ keguan.exe
 # 额 模块化https 未完成
 path
 
-# 偷偷摸摸
-weather.py
-
 # 别人的
 charts
 
@@ -17,7 +14,7 @@ charts
 public/files/*
 
 # 用户暂存目录
-views/upload*
+views/userfile
 
 # 日志文件
 access.log
