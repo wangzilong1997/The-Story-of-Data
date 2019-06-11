@@ -24,7 +24,15 @@
 
 ### 项目截图
 
-<div  style="display:flex;align-items:center;justify-content:center" ><img src="./image/首页.png" /></div>
+<img src="./image/首页.png" />
 <img src="./image/about页面.png"  />
 <img src="./image/使用界面.png" />
-
+<img src="./image/建议.png" />
+<img src="./image/效果1.png"  />
+<img src="./image/效果2.png" />
+<img src="./image/效果3.png" />
+<img src="./image/效果4.png"  />
+<img src="./image/效果5.png" />
+<img src="./image/图表样式展示1.png" />
+<img src="./image/图标样式展示2.png"  />
+<img src="./image/图表样式展示3.png" />
