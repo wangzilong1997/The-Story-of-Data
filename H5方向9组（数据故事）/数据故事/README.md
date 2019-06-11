@@ -24,7 +24,7 @@
 
 ### 项目截图
 
-<img style="display:flex;align-items:center;justify-content:center" src="./image/首页.png" />
+<div  style="display:flex;align-items:center;justify-content:center" ><img src="./image/首页.png" /></div>
 <img src="./image/about页面.png"  />
 <img src="./image/使用界面.png" />
 
