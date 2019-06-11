@@ -24,7 +24,7 @@
 
 ### 项目截图
 
-<img src="./image/首页.png"  height=400 />
-<img src="./image/about页面.png"  height=400 />
-<img src="./image/使用界面.png"  height=400 />
+<img src="./image/首页.png" />
+<img src="./image/about页面.png"  />
+<img src="./image/使用界面.png" />
 
