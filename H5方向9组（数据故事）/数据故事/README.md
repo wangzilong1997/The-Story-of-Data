@@ -23,8 +23,8 @@
   - Github：[https://github.com/wangzilong1997/The-Story-of-Data/](https://github.com/wangzilong1997/The-Story-of-Data/)
 
 ### 项目截图
-<p>
-<img src="./image/首页.png" width=250 height=400 />
-<img src="./image/about页面.png" width=250 height=400 />
-<img src="./image/使用界面.png" width=250 height=400 />
-</p>
+
+<img src="./image/首页.png"  height=400 />
+<img src="./image/about页面.png"  height=400 />
+<img src="./image/使用界面.png"  height=400 />
+
