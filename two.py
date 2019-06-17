@@ -111,7 +111,7 @@ def getcloud(linkfile):
     print(keyword[0][0])
     impkeyword = []
     keywordnum = []
-    file = open(linkfile,'r',encoding='utf-8-sig')
+    file = open('ebak.txt','r',encoding='utf-8-sig')
     source = file.read()
     for k in range(0,9):
         impkeyword.append(keyword[k][0])
