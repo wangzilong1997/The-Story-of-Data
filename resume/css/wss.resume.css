@@ -1,0 +1,61 @@
+#wss-resume {
+  width: 1000px;
+  margin: 10px auto;
+  padding: 10px 0;
+  min-width: 500px;
+  overflow:  visible;
+  font-family: "Microsoft Yahei";
+  font-size: 15px;
+  line-height: 27px;
+  background-color: #fff;
+  border-radius: 8px 8px 8px 8px;
+}
+#wss-resume-logo{
+  width: 250px;
+  height: 250px;
+  margin: 30px auto;
+  border-radius: 125px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  background-image: url('../img/26140158.jpg');
+}
+#wss-resume-slogan {
+  margin-top: 10px;
+  height: 125px;
+  margin: 10px 0;
+  padding: 10px;
+  text-align: center;
+  background-color: #eee;
+}
+#wss-resume-info {
+  height: 170px;
+  margin: 10px 0;
+  padding: 10px;
+  text-align: center;
+}
+#wss-resume-contact {
+	width: 50%;
+	float: left;
+	text-align: right;
+	padding: 0 10px;
+}
+#wss-resume-contact-skills {
+	height: 195px;
+	margin: 10px 0;
+	padding: 10px;
+	background-color: #eee;
+}
+
+#wss-resume-skills {
+	width: 50%;
+	float: right;
+	padding: 0 10px;
+}
+.wss-resume-title {
+	font-weight: bold;
+}
+#renderPdf {
+	margin: 1px 40px;
+	padding: 1px 12px;
+}

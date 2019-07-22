@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="cn">
+  <head>
+    <meta charset="utf-8">
+    <title>王子龙</title>
+    <link rel="stylesheet" href="css/wss.css">
+    <link rel="stylesheet" href="css/wss.resume.css">
+    <link rel="stylesheet" href="css/wss.timeline.css">
+  </head>
+  <body>
+    <div id="wss-resume">
+        <div id="wss-resume-logo"></div>
+		<div id="wss-resume-slogan"></div>
+		<div id="wss-resume-info"></div>
+		<div id="wss-resume-contact-skills">
+			<div id="wss-resume-contact"></div>
+			<div id="wss-resume-skills"></div>
+		</div>
+		<div id="wss-resume-timeline"></div>
+		<button id='renderPdf'>DOWNLOAD PDF</button>
+    </div>
+  </body>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/resume.js"></script>
+  <script src="js/mainresume.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/bsz-page-footer.js"></script>
+  <script src="js/fork-me-github.js"></script>
+  <script src="./js/html2canvas.js"></script>
+  <script src="./js/jsPdf.debug.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+	window.onload = function(){
+	var downPdf = document.getElementById("renderPdf");
+      downPdf.onclick = function() {
+		console.log('还没做好。。。。尴尬');
+	   /*	html2canvas(document.body, {
+		onrendered:function(canvas) {
+
+		var contentWidth = canvas.width;
+		var contentHeight = canvas.height;
+		//一页pdf显示html页面生成的canvas高度;
+		 var pageHeight = contentWidth / 595.28 * 841.89;															//未生成pdf的html页面高
+		 var leftHeight = contentHeight;
+		//pdf页面偏移
+		var position = 0;//a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+		var imgWidth = 555.28;
+		var imgHeight = 555.28/contentWidth * contentHeight;
+		var pageData = canvas.toDataURL('image/jpeg', 1.0);
+		var pdf = new jsPDF('', 'pt', 'a4');
+		//有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+		//当内容未超过pdf一页显示的范围，无需分页
+		if (leftHeight < pageHeight) { 
+			pdf.addImage(pageData, 'JPEG', 20, 0, imgWidth, imgHeight );
+			 } else {
+			while(leftHeight > 0) {
+			pdf.addImage(pageData, 'JPEG', 20, position, imgWidth, imgHeight)
+			 leftHeight -= pageHeight;
+			 position -= 841.89;																						
+			 if(leftHeight > 0){	
+			 pdf.addPage();
+			 }
+			 }
+			 }
+
+			 pdf.save('content.pdf');
+			}
+			})*/
+		}
+		}
+		})
+  </script>
+  
+
+
+</html>

@@ -9,6 +9,12 @@ var privatepem = fs.readFileSync('path/to/2031967_www.wangshuaishuai.com.pem','u
 var privatekey = fs.readFileSync('path/to/2031967_www.wangshuaishuai.com.key','utf8')
 var credentials = {key:privatekey,cert:privatepem}
 //var credentials = require('./lib/credentials.js')
+//微信部分
+/*const wechat = require('./wechat/wechat'),
+		wcconfig = require('./wcconfig');
+
+var wechatApp = new wechat(wcconfig);*/
+//微信部分结束
 var morgan = require('morgan')
 let url = require('url')
 //cron风格定时器
@@ -187,6 +193,9 @@ app.get('/start',function(req,res){
 		num++;
 		console.log(num)
 });
+app.get('/qunar',function(req,res){
+		res.sendFile(__dirname + '/index.html');
+});
 //关于页面
 app.get('/about',function(req,res){
 		res.render('about');
@@ -194,6 +203,10 @@ app.get('/about',function(req,res){
 		console.log(num)
 });
 
+//resume页面
+app.get('/i',function(req,res){
+		res.sendFile(__dirname + '/resume/index.html');
+});
 //echarts页面
 app.get('/echarts',function(req,res){
 		fs.readdir('charts/html',function(err,files){
