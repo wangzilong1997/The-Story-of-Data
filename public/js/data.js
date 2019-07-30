@@ -44,7 +44,7 @@ wss.data = {
 	  'class' : 'r',
 	  'date'  : '可以完成简单图片处理、视频剪辑、效果制作(简单的)',
 	  'event' : 'photoshop、 premiere、after effects',
-	  'href'  : ''
+	  'href'  : 'https://space.bilibili.com/96069442'
 	},
 	{
 	  'class' : 'l',
@@ -57,8 +57,12 @@ wss.data = {
 	  'date'  : 'Grunt可以实现单元测试自动构建等，Webpack简单打包。。',
 	  'event' : 'Grunt、Webpack自动构建打包工具、Git',
 	  'href'  : '//github.com/wangzilong1997/spa'
-	},
-	{
+	},{
+	  'class' : 'r',
+	  'date'  : '能够使用vue开发',
+	  'event' : 'Vue刚学的。。。。',
+	  'href'  : 'https://github.com/wangzilong1997/vue'
+	},{
 	  'class' : 'r',
 	  'date'  : '能够使用进行简单开发(依次忘得多)',
 	  'event' : 'React react-redux、Angular、Inoic、',

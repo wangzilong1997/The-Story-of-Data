@@ -114,6 +114,11 @@ app.post('/chatrecord/:year/:month',function(req,res){
 	var form = new formidable.IncomingForm();
 	form.uploadDir = './public/files';
 	form.parse(req,function(err,fields,files){
+		console.log(fields)
+		console.log(fields.name)
+		console.log(files.txt.name)
+		console.log(files.txt.lastModifiedDate)
+		console.log(files)
 		name = fields.name
 		if(err) return res.redirect(303,'/error');
 		let filepath = files.txt.path
@@ -132,6 +137,13 @@ app.post('/chatrecord/:year/:month',function(req,res){
 				console.log('成功删除了views/userfile/'+file[2]+'.handlebars')
 			});
 		},1000 * 600)*/
+		var processdate  = new Date();
+		let oneprocess = {}
+		oneprocess.filename = files.txt.name
+		oneprocess.fileid = file[2]
+		oneprocess.ontime = processdate.getHours()+':'+processdate.getMinutes()+':'+processdate.getSeconds()
+		processes.push(oneprocess)
+
 		cp.exec('python two.py '+name+' '+filepath,(err,stdout,stderr)=>{
 			if(err) console.log('stderr',err)
 			if(stdout) console.log('stdout',stdout)
@@ -292,6 +304,23 @@ app.get('/comments',(req,res) => {
 app.get('/commentss',(req,res) => {
 		num++
 		res.render('comments',{comments:comments});
+});
+
+//process 过程展示部分
+let processes = [
+		{
+		filename:'wangshuaishuai.txt',
+		fileid:'sdasdsadasdasdas',
+		ontime:'7月31'
+		},{
+		filename:'wangshuaishuai.txt',
+		fileid:'dsadsadasda',
+		ontime:'8月1'
+		}
+];
+app.get('/processes',function(req,res){
+		num++
+		res.render('process',{processes:processes});
 });
 
 //thank-you
