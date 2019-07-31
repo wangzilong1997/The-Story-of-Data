@@ -123,7 +123,7 @@ app.post('/chatrecord/:year/:month',function(req,res){
 		if(err) return res.redirect(303,'/error');
 		let filepath = files.txt.path
 		let file = filepath.split('/')
-	   /*etTimeout(()=>{
+		setTimeout(()=>{
 			fs.unlink(filepath,(err)=>{
 				if(err) {
 					throw err;
@@ -136,7 +136,10 @@ app.post('/chatrecord/:year/:month',function(req,res){
 				}
 				console.log('成功删除了views/userfile/'+file[2]+'.handlebars')
 			});
-		},1000 * 600)*/
+			if(processes.length > 0){	
+				processes.shift()
+			}
+		},1000 * 600)
 		var processdate  = new Date();
 		let oneprocess = {}
 		oneprocess.filename = files.txt.name
@@ -307,17 +310,7 @@ app.get('/commentss',(req,res) => {
 });
 
 //process 过程展示部分
-let processes = [
-		{
-		filename:'wangshuaishuai.txt',
-		fileid:'sdasdsadasdasdas',
-		ontime:'7月31'
-		},{
-		filename:'wangshuaishuai.txt',
-		fileid:'dsadsadasda',
-		ontime:'8月1'
-		}
-];
+let processes = [];
 app.get('/processes',function(req,res){
 		num++
 		res.render('process',{processes:processes});
