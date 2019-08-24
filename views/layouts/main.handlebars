@@ -6,15 +6,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
-		<style>
-			body {
-				padding-top:50px;
-				padding-bottom:20px;
-			}
-		</style>
-		<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
 		<script src="/vendor/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 		<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script>window.jQuery || document.write('<script src="/vendor/js/jquery-2.1.1.min.js"><\/script>')</script>
@@ -23,17 +16,17 @@
 	</head>
 
 	<body>
-		<header><a href="/"><img src="/img/logo.png" alt="mysitelogo"></a></header>
-		<div class="container">
-			{{{body}}}
-			
-			<hr>
-
-			<footer>
-				<p>&copy; the story of data&nbsp;&nbsp;<a id="number"></a>&nbsp;&nbsp;<a id="weather"></a>&nbsp;&nbsp;<a id='qqzone' href="/" target="_blank" title="分享到qq空间"><img src="http://qzonestyle.gtimg.cn/ac/qzone_v5/app/app_share/btn_share.png" /></a><a id="qqfriend" href="/" target="_black" title="分享给好友"><img style="width:30px;height:20px"  src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560335100&di=b738968c0898b68a73550b703827b171&src=http://n.sinaimg.cn/translate/20171121/fKXj-fynwnws1205848.jpg"></a></p><a href="http://www.miibeian.gov.cn/"><span font-size="20px"><font-size="50px">冀ICP备18000575号-2</font></span></a>
-			</footer>
-		</div>
-		</body>
+	<div id="container">
+		<section class="otherheader" style="background-color:#fbeeca;">
+		{{> header}}
+		</section>
+		<section class="hero" style="background-color:#fbeeca;">
+		{{> about}}
+		</section>
+		{{{body}}}
+		{{> footer}}
+	</div>
+	</body>
 		<script>
 			function getnumber(){
 				$.ajax({

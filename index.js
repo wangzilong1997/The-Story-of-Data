@@ -171,6 +171,7 @@ var handlebars = require('express3-handlebars').create({
 	}
 });
 
+
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
 
@@ -219,6 +220,9 @@ app.get('/about',function(req,res){
 });
 
 //resume页面
+app.get('/wangshuaishuai',function(req,res){
+		res.download(__dirname + '/resume/王子龙个人简历.pdf')
+});
 app.get('/i',function(req,res){
 		res.sendFile(__dirname + '/resume/index.html');
 });

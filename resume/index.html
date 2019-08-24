@@ -17,7 +17,7 @@
 			<div id="wss-resume-skills"></div>
 		</div>
 		<div id="wss-resume-timeline"></div>
-		<button id='renderPdf'>DOWNLOAD PDF</button>
+		<button id='renderPdf'><a href="http://wangshuaishuai.com/wangshuaishuai">DOWNLOAD PDF</a></button>
     </div>
   </body>
   <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -35,14 +35,15 @@
 	var downPdf = document.getElementById("renderPdf");
       downPdf.onclick = function() {
 		console.log('还没做好。。。。尴尬');
-	   /*	html2canvas(document.body, {
+	/*	html2canvas( $("#wss-resume"), {
+		allowTaint: true,
 		onrendered:function(canvas) {
 
 		var contentWidth = canvas.width;
 		var contentHeight = canvas.height;
 		//一页pdf显示html页面生成的canvas高度;
-		 var pageHeight = contentWidth / 595.28 * 841.89;															//未生成pdf的html页面高
-		 var leftHeight = contentHeight;
+		var pageHeight = contentWidth / 595.28 * 841.89;															//未生成pdf的html页面高
+		var leftHeight = contentHeight;
 		//pdf页面偏移
 		var position = 0;//a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
 		var imgWidth = 555.28;
@@ -67,6 +68,7 @@
 			 pdf.save('content.pdf');
 			}
 			})*/
+        
 		}
 		}
 		})
