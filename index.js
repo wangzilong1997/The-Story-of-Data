@@ -199,7 +199,7 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname,'access.log'),{fl
 app.use(morgan('combined',{stream:accessLogStream}));
 //默认页面
 app.get('/',function(req,res){
-		res.render('home' ,{ fortune:fortune.getFortune() });
+		res.render('home' ,{ fortune:fortune.getFortune(), processes:processes});
 		num++;
 		console.log(num)
 });
@@ -317,7 +317,7 @@ app.get('/commentss',(req,res) => {
 let processes = [];
 app.get('/processes',function(req,res){
 		num++
-		res.render('process',{processes:processes});
+		res.render('home',{processes:processes});
 });
 
 //thank-you
