@@ -57,7 +57,7 @@ li {
 	justify-content:center;
 }
 .home {
-	height:800px;	
+		
 }
 #container {
 	position:relative;
@@ -170,6 +170,10 @@ li {
 	width:100%;
 	height:100%;
 }
+#allcomform {
+	position:relative;
+	height:720px;
+}
 #comform {
 	position:relative;
 	margin-left:27rem;
@@ -190,4 +194,26 @@ li {
 #comform img {
 	width:100%;
 	height:100%;
+}
+#thankyou {
+	padding-top:29rem;
+	padding-left:30rem;
+	height:890px;
+	
+}
+#thankyou h2 {
+	 font-family:Cooper,Georgia,Times,Times New Roman,serif !important;  
+}
+#thankyou a {
+	color:#ffe01b !important;
+}
+
+#body {
+	position:relative;
+	margin-top:14rem;
+	margin-left:19rem;
+	width:100%;
+	height:100%;
+	padding-bottom:9rem;
+	overflow:hidden;
 }

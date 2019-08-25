@@ -152,7 +152,7 @@ app.post('/chatrecord/:year/:month',function(req,res){
 			if(stdout) console.log('stdout',stdout)
 			console.log(file[2] + '当前用户处理程序完成')
 			console.log(filepath)
-			res.redirect(303,'/thank-you?userid='+file[2])
+			res.redirect(303,'/thank-you?userid=' +	file[2] + '#thankyou')
 		});
 		num++;
 		console.log(num)
@@ -243,7 +243,7 @@ app.get('/echarts',function(req,res){
 //子进程处理界面
 app.get('/process',function(req,res){
 	console.log(req.query.userid)
-	res.render('userfile/'+req.query.userid)
+	res.render('userfile/'+req.query.userid,{bodynamehave:666})
 	num++
 	console.log(num)
 });

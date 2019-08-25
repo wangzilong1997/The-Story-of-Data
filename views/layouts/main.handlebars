@@ -23,12 +23,13 @@
 		<section class="hero" style="background-color:#fbeeca;">
 		{{> about}}
 		</section>
-		{{> start}}
-		<section class="process">
-		{{> process}}
-		</section>
-		{{> comform}}
-		{{{body}}}
+			{{# if bodynamehave }}
+			<div id="body">
+				{{{body}}}
+			</div>
+			{{ else }}
+				{{{body}}}
+			{{/if}}
 		{{> footer}}
 	</div>
 	</body>
