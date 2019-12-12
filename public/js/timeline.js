@@ -16,7 +16,7 @@ var $timeline = (function() {
       if(e.href === '')   {
         ev_items = ev_items.replace('$','<span class="flag">' + e.event +'</span>');
       } else {
-        ev_items = ev_items.replace('$', '<a href="' + e.href +'"><span class="flag">' + e.event + '</span></a>');
+        ev_items = ev_items.replace('$', '<a href="' + e.href +'" target="_blank"><span class="flag">' + e.event + '</span></a>');
       }
       items += ev_items;
     });

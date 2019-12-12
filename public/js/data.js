@@ -18,6 +18,7 @@ wss.data = {
 	'联系方式',
 	'QQ:1321 787 581',
 	'TEL:15227111790',
+	'Email:1321787581@qq.com'
 	],
 	'skills' : [
 	'技术了解',
@@ -36,7 +37,7 @@ wss.data = {
 	  'href'  : 'https://github.com/wangzilong1997/script'
 	},
 	{ 'class' : 'r',
-	  'date'  : '最近的简单的网站项目',
+	  'date'  : '最近的简单的网站项目(express + hds模板)',
 	  'event' : '简单的项目',
 	  'href'  : 'https://github.com/wangzilong1997/The-Story-of-Data'
 	},
@@ -55,9 +56,15 @@ wss.data = {
 	{
 	  'class' : 'r',
 	  'date'  : 'Grunt可以实现单元测试自动构建等，Webpack简单打包。。',
-	  'event' : 'Grunt、Webpack自动构建打包工具、Git',
+	  'event' : 'Grunt、Webpack自动构建打包工具、Git熟练使用',
 	  'href'  : '//github.com/wangzilong1997/spa'
 	},{
+	  'class' : 'l',
+	  'date'  : 'vue简单视图层页面实现',
+	  'event' : 'Vue 简单项目页面',
+	  'href'  : 'http://wangshuaishuai.com/qunar'
+	},
+	{
 	  'class' : 'r',
 	  'date'  : '能够使用vue开发',
 	  'event' : 'Vue刚学的。。。。',
@@ -65,8 +72,13 @@ wss.data = {
 	},{
 	  'class' : 'r',
 	  'date'  : '能够使用进行简单开发(依次忘得多)',
-	  'event' : 'React react-redux、Angular、Inoic、',
+	  'event' : 'React redux、Angular、Inoic、',
 	  'href'  : '//github.com/wangzilong1997/reactwork'
+	},{
+	  'class' : 'l',
+	  'date'  : 'H5简单小游戏',
+	  'event' : 'H5 、CSS3熟练使用相关api',
+	  'href'  : 'https://wangzilong1997.github.io/html5fishgame/'
 	},
 	{
 	  'class' : 'l',
@@ -82,8 +94,8 @@ wss.data = {
 	},
 	{
 	  'class' : 'r',
-	  'date'  : 'Nodejs、Python可作为后台语言进行开发',
-	  'event' : 'Nodejs、Python轻量语言',
+	  'date'  : 'Nodejs(使用过express开发网站后台,koa微信公众号后台)、Python(使用过微信公众号后台)',
+	  'event' : 'Nodejs、Python可作为后台语言进行开发',
 	  'href'  : ''
 	},
 	{
