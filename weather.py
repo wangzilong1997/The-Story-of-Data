@@ -1,6 +1,10 @@
+#-*- coding: UTF-8 -*- 
 import requests
 import time
 from lxml import etree
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='gb18030') 
 
 def getweather():
     weather = []

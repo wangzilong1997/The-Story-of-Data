@@ -157,8 +157,11 @@ if __name__ == '__main__':
     print(name)
     print(linkfile)
     file = linkfile.split('/')
+    if len(file) == 1:
+        file = linkfile.split('\\')
     page = Page()
     getyear(name,linkfile)
     getcloud(linkfile)
+    print("file[2]",file)
     #年度表格添加
     page.render('views/userfile/'+file[2]+'.handlebars')

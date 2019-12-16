@@ -5,9 +5,12 @@ var fortune = require('./lib/fortune.js')
 var app = express()
 var http = require('http')
 var https = require('https')
-var privatepem = fs.readFileSync('path/to/2031967_www.wangshuaishuai.com.pem','utf8')
-var privatekey = fs.readFileSync('path/to/2031967_www.wangshuaishuai.com.key','utf8')
-var credentials = {key:privatekey,cert:privatepem}
+
+var Mysql = require('./www/mysql')
+var Router = require('./www/router')
+//var privatepem = fs.readFileSync('path/to/2031967_www.wangshuaishuai.com.pem','utf8')
+//var privatekey = fs.readFileSync('path/to/2031967_www.wangshuaishuai.com.key','utf8')
+//var credentials = {key:privatekey,cert:privatepem}
 //var credentials = require('./lib/credentials.js')
 //微信部分
 /*const wechat = require('./wechat/wechat'),
@@ -30,56 +33,14 @@ const scheduleweather = () =>{
 scheduleweather();
 //数据库操作部分
 var mysql = require('mysql');
-var connection = mysql.createConnection({
-	host:'localhost',
-	user:'root',
-	password:'root',
-	database:'sum',
-	prot:'3306'
-});
-connection.connect(function(err){
-	if(err){
-		console.log('___:'+err);
-		return;
-	}
-	console.log('链接数据库')
-});
+var connection = mysql.createConnection(Mysql.config());
+connection.connect(Mysql.connect());
 
-function insert(){
-	var ins = 'insert into number (people) values (?)';
-	var param = num;
-	connection.query(ins,param,function(err,rs){
-		if(err){
-			console.log(err.message);
-			return;
-		}
-		console.log('插入数据完成');
-	});
-}
-function select(){
-	connection.query('select people from number',function(err,res){
-		if(err){
-			console.log(err);
-			return;
-		}
-		rlen = res.length
-		num = res[rlen-1].people
-		bill = num
-	});
-}
-function close(){
-	connection.end(function(err){
-		if(err){
-			console.log('___:'+err);
-			return
-		}
-		console.log('关闭成功')
-	})
-}
-
-var bill;
-var num;
-select();
+//bill是一个异步的promise结果 没执行完之前不会显示
+bill = Mysql.select(connection)
+var num ;
+setTimeout(async ()=>{console.log('really',bill);num = bill;},1000)
+num = bill;
 
 //访问记录持续写入数据
 setInterval(function(){
@@ -89,9 +50,9 @@ setInterval(function(){
 		console.log('并没有人访问')
 	}
 	else{
-		insert();
+		Mysql.insert(num,connection);
 		console.log('else执行');
-		select();
+		bill = Mysql.select(connection);
 	}
 },3600000)
 //图片文件上传部分
@@ -122,7 +83,9 @@ app.post('/chatrecord/:year/:month',function(req,res){
 		name = fields.name
 		if(err) return res.redirect(303,'/error');
 		let filepath = files.txt.path
-		let file = filepath.split('/')
+		//基于windows 开发的修改
+		let file = filepath.split('/').length == 1?filepath.split('\\'):filepath.split('/');
+
 		setTimeout(()=>{
 			fs.unlink(filepath,(err)=>{
 				if(err) {
@@ -201,7 +164,7 @@ app.use(morgan('combined',{stream:accessLogStream}));
 app.get('/',function(req,res){
 		res.render('home' ,{ fortune:fortune.getFortune(), processes:processes});
 		num++;
-		console.log(num)
+		console.log('/num',num)
 });
 //提交处理页面
 app.get('/start',function(req,res){
@@ -254,15 +217,20 @@ app.get('/handlebars',function(req,res){
 });
 //天气数据接口
 var weather =[];
+const iconv = require('iconv-lite');
 app.get('/weather',function(req,res){
 		res.status(200);
 		console.log(typeof(weather))
+		//第一次过来的时候执行第一部分
 		if(weather instanceof Object){
-			cp.exec('python weather.py',(err,stdout,stderr)=>{
+			cp.exec('python weather.py',{encoding: ' '},(err,stdout,stderr)=>{
+				stdout = iconv.decode(stdout, 'utf-8');
 				if(err) console.log('stderr',err);
+				console.log(stdout)
 				if(stdout) weather=stdout
 				console.log(typeof(weather));
 				res.json({weather})
+
 			})
 		}
 		else{
@@ -372,12 +340,12 @@ function shutDown(){
 //kill 程序时保存到数据库
 process.on('SIGTERM',function(){
 	console.log('SIGTERM执行')
-	insert();
+	Mysql.insert(num,connection);
 	process.exit(0);
 });
 
 process.on('SIGINT',function(){
-	insert();
+	Mysql.insert(num,connection);;
 /*	
 	setTimeout(() =>{
 		close();
@@ -392,4 +360,4 @@ process.on('SIGINT',function(){
 	
 });
 http.createServer(app).listen(80)
-https.createServer(credentials,app).listen(443)
+//https.createServer(credentials,app).listen(443)
