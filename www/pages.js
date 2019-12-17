@@ -3,7 +3,7 @@
  * @date 2019/12/16 17:05
  */
 Pages =  {
-    main: function (app,fortune,processes){
+    main: function (app,fortune,processes,num){
         app.get('/',function(req,res){
             res.render('home' ,{ fortune:fortune.getFortune(), processes:processes});
         });

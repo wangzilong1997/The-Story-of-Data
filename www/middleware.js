@@ -17,6 +17,12 @@ var Middleware = {
             res.status(500);
             res.render('500');
         });
+    },
+    statics:function (app,express,__dirname) {
+        app.use(express.static(__dirname + '/public'));
+    },
+    uploadDir:function (app,path,__dirname) {
+        app.set('files',path.join(__dirname,'/public/files'));
     }
 }
 

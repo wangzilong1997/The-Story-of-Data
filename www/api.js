@@ -2,6 +2,7 @@
  * @author wangzilong
  * @date 2019/12/17 10:47
  */
+var Mysql = require('./mysql')
 const iconv = require('iconv-lite');
 var Api = {
     weather:function (app,weather,cp) {
@@ -27,11 +28,18 @@ var Api = {
 
         });
     },
-    handlebars:function (app,num) {
+    handlebars:function (app,num,connection) {
         app.get('/handlebars',function(req,res){
+            console.log(num);
+            num++;
             res.status(200);
-            res.json({num})
+            res.json({num});
         });
-    }
+        setInterval(()=>{
+            console.log('handlebars',num)
+            Mysql.insert(num,connection)
+        },1800000)
+
+}
 }
 module.exports = Api;
